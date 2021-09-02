@@ -1,6 +1,6 @@
 <div class="container text-center">
     <main class="form-signin">
-        <form #formData='ngForm' (ngSubmit)="login()" autocomplete="off">
+        <form #formData='ngForm' (ngSubmit)="login()" autocomplete="off" class="form">
           <h1 class="h3 mb-5 fw-normal">Please sign in</h1>
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Username" name="username" [(ngModel)]="model.username">

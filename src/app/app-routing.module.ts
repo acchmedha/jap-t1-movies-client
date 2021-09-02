@@ -6,11 +6,21 @@ import { TestErrorsComponent } from './errors/test-errors/test-errors.component'
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
+import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { RegisterComponent } from './register/register.component';
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      {path: 'movies', component: MovieListComponent},
+      {path: 'movies/:title', component: MovieDetailComponent},
+    ]
+  },
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'errors', component: TestErrorsComponent},

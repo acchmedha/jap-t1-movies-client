@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AccountService } from '../services/account.service';
+import { MovieService } from '../services/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -9,14 +10,12 @@ import { AccountService } from '../services/account.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private accountService: AccountService, private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  logout() {
-    this.accountService.logout();
-    this.router.navigateByUrl('/login');
-  }
+  
+
 
 }
