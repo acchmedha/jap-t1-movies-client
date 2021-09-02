@@ -9,17 +9,13 @@ import { MovieService } from '../services/movie.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  movies: any[];
 
-  constructor(private accountService: AccountService, private router: Router, private movieService: MovieService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  logout() {
-    this.accountService.logout();
-    this.router.navigateByUrl('/login');
-  }
+  
 
 
 }

@@ -18,6 +18,7 @@ import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { TabComponent } from './tab/tab.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
     ServerErrorsComponent,
     MovieListComponent,
     MovieDetailComponent,
-    MovieCardComponent
+    MovieCardComponent,
+    TabComponent
   ],
   imports: [
     BrowserModule,

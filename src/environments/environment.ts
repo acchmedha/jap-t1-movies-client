@@ -5,6 +5,7 @@
 export const environment = {
   production: false.valueOf,
   apiUrl: 'http://localhost:5001/api/',
+  clientUrl: 'http://localhost:4200/',
   tmdbUrl: 'https://api.themoviedb.org/3/movie/popular?api_key=6bbf1ff0a26e170b2bec2d589d34e6fe'
 };
 

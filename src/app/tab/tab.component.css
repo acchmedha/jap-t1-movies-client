@@ -1,0 +1,7 @@
+ul > li:last-of-type {
+    margin-left: auto;
+}
+
+.nav-link {
+  cursor: pointer;
+}

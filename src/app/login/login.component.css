@@ -2,9 +2,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-
 }
-
 .form-signin {
     margin-top: 50%;
     width: 100%;
@@ -16,5 +14,7 @@
 .form-control {
     padding: 23px;
 }
+
+
 
 

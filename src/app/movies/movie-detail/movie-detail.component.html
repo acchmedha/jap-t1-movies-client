@@ -1,1 +1,31 @@
-<p>movie-detail works!</p>
+  <div class="row mt-5" *ngIf="movie">
+    <div class="col-4">
+        <div class="card">
+            <img src="{{movie.posterPath || './assets/user.png'}}" alt="{{movie.title}}" class="card-img-top img-thumbnail">
+            <div class="card-body">
+                <div>
+                    <strong>Title: </strong>
+                    <p>{{movie.title}}</p>
+                </div>
+                <div>
+                    <strong>Vote Average: </strong>
+                    <p>{{movie.voteAverage}}</p>
+                </div>
+                <div>
+                    <strong>Release Date: </strong>
+                    <p>{{movie.releaseDate | date: 'longDate'}}</p>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+    <div class="col-8 mt-2">
+        <div>
+            <h4>Movie Description</h4>
+            <p>{{movie.overview}}</p>
+        </div>
+        <div>
+            <h4>Place for vote rating</h4>
+        </div>
+    </div>
+</div>

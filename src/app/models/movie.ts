@@ -4,5 +4,5 @@ export interface Movie {
     voteAverage: number;
     posterPath: string;
     releaseDate: Date;
-    overwiew: string;
+    overview: string;
 }
