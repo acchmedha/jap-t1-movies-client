@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
     this.accountService.register(this.model).subscribe(response => {
       console.log(response);
       form.resetForm();
-      this.toastr.success(`User ${response.username} registered!`);
+      this.toastr.success(`User registered!`);
     }, error => {
       console.log(error);
       this.toastr.error(error);
