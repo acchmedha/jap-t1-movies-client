@@ -2,6 +2,11 @@ ul > li:last-of-type {
     margin-left: auto;
 }
 
-.nav-link {
+.nav-link.logout {
   cursor: pointer;
+}
+
+.nav-link.logout:hover {
+  background-color: rgb(224, 72, 72);
+  color: white;
 }

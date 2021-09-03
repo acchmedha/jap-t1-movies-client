@@ -1,4 +1,12 @@
 <div class="container mt-5" *ngIf="accountService.currentUser$ | async">
+  <div class="input-group mb-5">
+    <div class="form-outline">
+      <input type="search" class="form-control" placeholder="Search">
+    </div>
+    <button type="button" class="btn btn-primary">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/movies">Movies</a>
@@ -7,14 +15,9 @@
           <a class="nav-link" routerLink="/errors">Errors</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" (click)="logout()">Logout</a>
+          <a class="nav-link logout" (click)="logout()">Logout</a>
         </li>
     </ul>
-    <!-- <tabset class="movie-tabset">
-      <tab heading='Movies'><a routerLink="/movies"></a></tab>
-      <tab heading='Errors' routerLink="/errors"></tab>
-      <tab heading='Logout' (click)="logout()"></tab>
-    </tabset> -->
 </div>
 
 
