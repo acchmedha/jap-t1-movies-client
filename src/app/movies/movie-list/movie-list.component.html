@@ -3,3 +3,7 @@
         <app-movie-card [movie]="movie"></app-movie-card>  
     </div>
 </div>
+
+<div class="d-flex justify-content-center" *ngIf="pagination">
+    <button class="btn btn-warning mb-4 mt-4" (click)="loadMoreData()"><i class="fa fa-chevron-circle-down" aria-hidden="true"></i> View more results</button>
+</div>

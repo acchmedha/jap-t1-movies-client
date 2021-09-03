@@ -1,6 +1,8 @@
 .card {
     height: 95%;
+    background-color: rgba(45, 45, 46, 0.89);
 }
+
 
 .card:hover img {
     transform: scale(1.2, 1.2);
