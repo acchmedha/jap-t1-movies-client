@@ -6,31 +6,30 @@
         </div>
     </div>
     <div class="col-8 mt-5 text-white">
-        <div class="d-flex">
+        <div class="d-flex align-items-start flex-column">
             <div class="mr-auto p-2">
                 <h3>{{movie.title}}</h3>
             </div>
-            <div class="p-2 text-center">
-                <h6 class="text-muted">RATING </h6>
-                <p style="padding-top: 9px;"><i style="font-size: 2em; color: #f5c518;" class="fa fa-star mr-2"></i>
-                    <span class="rating">{{movie.voteAverage}}<span class="text-muted">/10</span></span></p>
-            </div>
-            <div class="p-2 text-center">
-                <h6 class="text-muted">YOUR RATING </h6>
-                <button (click)="open(content)" class="btn btn-default vote d-flex"><i style="font-size: 2em;color: #5799ef;" 
-                    class="fa fa-star-o mr-2 vote-icon">
-                </i><p class="vote-text"> {{(movie.userVote == 0) ? "Rate" : movie.userVote}}</p></button>
+            <div class="p-2">
+                <h5 class="text-muted">Rating</h5>
+                <p class="ml-3" (click)="open(content)"><i style="font-size: 1.8em; color: #f5c518;" class="fa fa-star mr-2"></i>
+                    <span class="rating h5">{{movie.voteAverage}}<span class="text-muted">/10</span></span></p>
             </div>
             <div class="p-2">
-                <h6 class="text-muted">RELEASE DATE </h6>
-                <p style="font-size: 19px; padding-top: 11px;">{{movie.releaseDate | date: 'longDate'}}</p>
+                <h5 class="text-muted">Your rating</h5>
+                  <p class="ml-3" (click)="open(content)"><i style="font-size: 1.8em;color: #5799ef;" class="fa fa-star-o mr-2 vote-icon"></i>
+                    <span class="rating h5">{{(movie.userVote == 0) ? "Rate" : movie.userVote}}</span></p>
             </div>
+            <div class="p-2">
+                <h5 class="text-muted">Release date </h5>
+                <p>{{movie.releaseDate | date: 'longDate'}}</p>
+            </div>
+            <div class="p-2"> 
+              <h5 class="text-muted">Movie Description</h5>
+              <p>{{movie.overview}}</p>
+          </div>
         </div>
         
-        <div>
-            <h4 class="text-muted">Movie Description</h4>
-            <p>{{movie.overview}}</p>
-        </div>
     </div>
 </div>
 

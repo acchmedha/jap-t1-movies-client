@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { Pagination } from 'src/app/models/pagination';
 import { MovieService } from 'src/app/services/movie.service';
@@ -13,15 +14,17 @@ export class MovieListComponent implements OnInit {
   pagination: Pagination;
   pageNumber = 1;
   pageSize = 10;
+  filterTerm: string = '';
+  timer: any;
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, public router: Router) { }
 
   ngOnInit(): void {
     this.loadMovies();
   }
 
   loadMovies() {
-    this.movieService.getMovies(this.pageNumber, this.pageSize).subscribe(res => {
+    this.movieService.getMovies(this.pageNumber, this.pageSize, this.filterTerm).subscribe(res => {
       this.movies = res.result;
       this.pagination = res.pagination;
     })
@@ -32,4 +35,10 @@ export class MovieListComponent implements OnInit {
     this.loadMovies();
   }
 
+  Search() {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
+      this.loadMovies();
+    }, 400);
+  }
 }
