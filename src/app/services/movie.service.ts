@@ -38,4 +38,8 @@ export class MovieService {
   getMovie(title: string) {
     return this.http.get<Movie>(this.baseUrl + 'movies/' + title);
   }
+
+  updateMovie(id: number, movie: Movie) {
+    return this.http.put(this.baseUrl + `movies/${id}`, movie, {responseType: 'text'});
+  }
 }
