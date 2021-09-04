@@ -19,6 +19,7 @@ import { MovieDetailComponent } from './movies/movie-detail/movie-detail.compone
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { TabComponent } from './tab/tab.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { TabComponent } from './tab/tab.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    NgbModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

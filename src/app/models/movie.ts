@@ -5,4 +5,5 @@ export interface Movie {
     posterPath: string;
     releaseDate: Date;
     overview: string;
+    userVote: number;
 }

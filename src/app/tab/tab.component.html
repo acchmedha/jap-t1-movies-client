@@ -1,18 +1,18 @@
 <div class="container mt-5" *ngIf="accountService.currentUser$ | async">
-  <div class="input-group mb-5">
-    <div class="form-outline">
-      <input type="search" class="form-control" placeholder="Search">
+  <div class="container mb-2" *ngIf="router.url == '/movies'">
+    <div class="d-flex justify-content-center">
+      <div class="searchbar">
+        <input class="search_input" type="text" name="" placeholder="Search...">
+        <a href="movies" class="search_icon"><i class="fa fa-search"></i></a>
+      </div>
     </div>
-    <button type="button" class="btn btn-primary">
-      <i class="fa fa-search"></i>
-    </button>
   </div>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs" *ngIf="router.url == '/movies'">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/movies">Movies</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/errors">Errors</a>
+          <a class="nav-link disabled" routerLink="/errors">Errors</a>
         </li>
         <li class="nav-item">
           <a class="nav-link logout" (click)="logout()">Logout</a>

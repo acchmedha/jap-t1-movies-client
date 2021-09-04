@@ -9,9 +9,9 @@ import { AccountService } from '../services/account.service';
   styleUrls: ['./tab.component.css']
 })
 export class TabComponent implements OnInit {
-baseUrl = environment.clientUrl;
+  baseUrl = environment.clientUrl;
 
-  constructor(public accountService: AccountService, private router: Router) { }
+  constructor(public accountService: AccountService, public router: Router) { }
 
   ngOnInit(): void {
   }
