@@ -5,6 +5,7 @@ import { TabsModule } from "ngx-bootstrap/tabs";
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbPaginationModule,
     NgbAlertModule,
     TooltipModule.forRoot(),
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BsDropdownModule.forRoot()
 
   ],
   exports: [
@@ -27,7 +29,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     NgbPaginationModule,
     NgbAlertModule,
     TooltipModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    BsDropdownModule
   ]
 
 })

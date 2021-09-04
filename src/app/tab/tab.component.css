@@ -16,3 +16,7 @@ ul > li:last-of-type {
   color: white;
 
 }
+
+.btn:hover {
+  background-color: #32383d;
+}

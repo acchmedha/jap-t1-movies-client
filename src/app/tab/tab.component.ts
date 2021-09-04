@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Movie } from '../models/movie';
 import { AccountService } from '../services/account.service';
 
 @Component({
@@ -11,7 +10,6 @@ import { AccountService } from '../services/account.service';
 })
 export class TabComponent implements OnInit {
   baseUrl = environment.clientUrl;
-  filterTerm: string;
 
   constructor(public accountService: AccountService, public router: Router) { }
 

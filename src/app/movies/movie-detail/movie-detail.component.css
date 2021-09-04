@@ -1,8 +1,5 @@
-body {
-    overflow: auto;
-}
 .details {
-    margin-top: 12%;
+    margin-top: 5%;
 }
 
 
@@ -22,22 +19,10 @@ body {
     border-top: none;
 }
 
-.vote {
-    padding-top: px;
-}
 
 .vote-text {
     color: #5799ef;
-    font-size: 20px;
     padding: 0;
-}
-
-.vote-icon {
-    margin-top: 0px;
-}
-
-.rating {
-    font-size: 1.3em;
 }
 
 .modal-header {
@@ -52,6 +37,6 @@ body {
 
 .back-btn {
     position: absolute;
-    left: 15%;
-    top: 5%;
+    left: 1%;
+    top: 1%;
 }
