@@ -20,6 +20,8 @@ import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { TabComponent } from './tab/tab.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 
 @NgModule({
@@ -44,10 +46,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     SharedModule,
     NgbModule,
+    NgxSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor , multi: true}
   ],
   bootstrap: [AppComponent]
 })
