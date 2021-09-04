@@ -4,6 +4,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { TabsModule } from "ngx-bootstrap/tabs";
 import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     NgbPaginationModule,
     NgbAlertModule,
     TooltipModule.forRoot(),
+    Ng2SearchPipeModule
 
   ],
   exports: [
@@ -24,7 +26,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
     TabsModule,
     NgbPaginationModule,
     NgbAlertModule,
-    TooltipModule
+    TooltipModule,
+    Ng2SearchPipeModule
   ]
 
 })

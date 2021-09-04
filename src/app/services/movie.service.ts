@@ -16,12 +16,13 @@ export class MovieService {
 
   constructor(private http: HttpClient) { }
 
-  getMovies(page?: number, itemsPerPage?: number) {
+  getMovies(page?: number, itemsPerPage?: number, searchString?: string) {
     let params = new HttpParams();
 
     if(page !== null && itemsPerPage !== null) {
       params = params.append('pageNumber', page.toString());
       params = params.append('pageSize', itemsPerPage.toString());
+      params = params.append('search', searchString);
     }
     return this.http.get<Movie[]>(this.baseUrl + 'movies', {observe: 'response', params}).pipe(
       map(response => {
