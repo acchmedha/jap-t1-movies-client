@@ -1,0 +1,22 @@
+ul > li:last-of-type {
+    margin-left: auto;
+}
+
+.nav-link.logout {
+  cursor: pointer;
+  color: white
+}
+
+.logout {
+  background-color: #e43a27;
+}
+
+.nav-link.logout:hover {
+  background-color: red;
+  color: white;
+
+}
+
+.btn:hover {
+  background-color: #32383d;
+}
