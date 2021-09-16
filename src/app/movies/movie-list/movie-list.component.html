@@ -5,11 +5,11 @@
         Home</a>
     </li>
       <li class="nav-item">
-        <a class="nav-link bg-warning mr-1 text-dark btn-movies" (click)="onClick(m.id)" #m id="movie" aria-current="page" routerLink="/movies"><i class="fa fa-film" aria-hidden="true"></i>
+        <a class="nav-link bg-warning mr-1 text-dark btn-movies" (click)="switchType(0)"aria-current="page" routerLink="/movies"><i class="fa fa-film" aria-hidden="true"></i>
           Movies</a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link bg-warning text-dark btn-shows" (click)="onClick(tv.id)" #tv id="tvshow" aria-current="page" routerLink="/tvshows"><i class="fa fa-television" aria-hidden="true"></i>
+        <a class="nav-link bg-warning text-dark btn-shows" (click)="switchType(1)" aria-current="page" routerLink="/movies"><i class="fa fa-television" aria-hidden="true"></i>
           Tv Shows</a>
       </li>
       <li class="nav-item" *ngIf="(accountService.currentUser$ | async) as user">
@@ -21,6 +21,7 @@
               role="menu" aria-labelledby="button-basic">
             <li role="menuitem"><a class="dropdown-item" href="/">Home</a></li>
             <li role="menuitem"><a class="dropdown-item" href="/movies">Movies</a></li>
+            <li role="menuitem"><a class="dropdown-item" href="/movies">Tv shows</a></li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem" (click)="logout()" style="cursor: pointer;"><a class="dropdown-item">Sign out</a>
             </li>
@@ -35,7 +36,7 @@
 
 <div class="container mb-3 pl-0 pr-0" *ngIf="router.url != '/'">
   <div class="form-outline d-flex justify-content-start search-bar">
-    <input type="search" class="form-control w-25" [(ngModel)]="filterTerm" (ngModelChange)="Search()"  placeholder="Search...">
+    <input type="search" class="form-control w-25" [(ngModel)]="videoParams.search" (ngModelChange)="Search()"  placeholder="Search...">
   </div>
 
 <div class="row  row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 mt-5">

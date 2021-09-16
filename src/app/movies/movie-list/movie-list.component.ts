@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
+import { moviesTvShowsParams } from 'src/app/models/movies-tv-shows-params.model';
 import { AccountService } from 'src/app/services/account.service';
 import { MovieService } from 'src/app/services/movie.service';
 import { environment } from 'src/environments/environment';
@@ -12,53 +13,40 @@ import { environment } from 'src/environments/environment';
 })
 export class MovieListComponent implements OnInit {
   baseUrl = environment.clientUrl;
-  movies: Movie[];
-  pageNumber = 1;
-  pageSize = 10;
-  filterTerm: string = '';
+  movies: Movie[] = [];
   timer: any;
-  data: string = "";
+  videoParams: moviesTvShowsParams;
 
-  constructor(private movieService: MovieService, public router: Router, public accountService: AccountService) {}
+  constructor(private movieService: MovieService, public router: Router, public accountService: AccountService) {
+    this.videoParams = this.movieService.resetVideoParams();
+  }
 
-  ngOnInit() {
+  ngOnInit(): void{
     this.loadMovies();
   }
 
-
-
-  onClick(value: string) {
-    this.data = value;
-    console.log(value);
+  loadMovies() {
+    this.movieService.getMoviesOrTvShows(this.videoParams).subscribe(res => {
+      this.movies = res.body;
+    }, error => {
+      console.log(error);
+    })
   }
 
-
-  loadMovies() {
-    if(this.data === 'tvshow') {
-      this.movieService.getTvShows(this.pageNumber, this.pageSize, this.filterTerm).subscribe(res => {
-        this.movies = res.body;
-        console.log("TVSHOWS",res);
-      }, error => {
-        console.log(error);
-      })
-    }
-    else {
-      this.movieService.getMovies(this.pageNumber, this.pageSize, this.filterTerm).subscribe(res => {
-        this.movies = res.body;
-        console.log("MOVIES",res);
-      }, error => {
-        console.log(error);
-      })
-    }
-    
+  switchType(type: number) {
+    this.movies = [];
+    this.videoParams = this.movieService.resetVideoParams();
+    this.videoParams.type = type;
+    this.loadMovies();
   }
 
   loadMoreData() {
-    this.pageSize = this.pageSize * 2;
+    this.videoParams.pageSize *= 2;
     this.loadMovies();
   }
 
   Search() {
+    //debounce
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
       this.loadMovies();

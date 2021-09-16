@@ -1,9 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { environment } from 'src/environments/environment';
 import { Movie } from '../models/movie';
+import { moviesTvShowsParams } from '../models/movies-tv-shows-params.model';
 
 
 @Injectable({
@@ -11,16 +10,29 @@ import { Movie } from '../models/movie';
 })
 export class MovieService {
   baseUrl = environment.apiUrl;
+  videoParams: moviesTvShowsParams;
   
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.videoParams = new moviesTvShowsParams();
+  }
 
-  getMovies(page?: number, itemsPerPage?: number, searchString?: string) {
+  setVideoParams(params: moviesTvShowsParams) {
+    this.videoParams = params;
+  }
+
+  resetVideoParams() {
+    this.videoParams = new moviesTvShowsParams();
+    return this.videoParams;
+  }
+
+  getMoviesOrTvShows(videoParams: moviesTvShowsParams) {
     let params = new HttpParams();
-    if(page !== null && itemsPerPage !== null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-      params = params.append('search', searchString);
-    }
+    if(videoParams.pageNumber !== null && videoParams.pageSize !== null) {
+      params = params.append('pageNumber', videoParams.pageNumber.toString());
+      params = params.append('pageSize', videoParams.pageSize.toString());
+      params = params.append('search', videoParams.search.toString() || "");
+      params = params.append('type', videoParams.type.toString());
+}
     return this.http.get<Movie[]>(this.baseUrl + 'moviestvshows', {observe: 'response', params});
 
   }
@@ -29,18 +41,13 @@ export class MovieService {
     return this.http.get<Movie>(this.baseUrl + 'moviestvshows/' + id);
   }
 
-  getTvShows(page?: number, itemsPerPage?: number, searchString?: string) {
-    let params = new HttpParams();
-    if(page !== null && itemsPerPage !== null) {
-      params = params.append('pageNumber', page.toString());
-      params = params.append('pageSize', itemsPerPage.toString());
-      params = params.append('search', searchString);
-    } 
-    return this.http.get<Movie[]>(this.baseUrl + 'moviestvshows/tv-shows', {observe: 'response', params});
-  }
 
-  updateMovie(id: number, movie: Movie) {
-    return this.http.put(this.baseUrl + `moviestvshows/${id}`, movie, {responseType: 'text'});
+  rateVideos(id: number, rate: number) {
+    const rating = {
+      "value": rate,
+      "movieId": id
+    }
+    return this.http.post(this.baseUrl + `ratings/add`, rating);
   }
 
 

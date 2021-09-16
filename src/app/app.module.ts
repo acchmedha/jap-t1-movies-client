@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { SharedModule } from './modules/shared.module';
 import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
@@ -21,8 +21,8 @@ import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { TabComponent } from './tab/tab.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { TvshowsComponent } from './tvshows/tvshows.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
 @NgModule({
@@ -46,9 +46,11 @@ import { TvshowsComponent } from './tvshows/tvshows.component';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     SharedModule,
     NgbModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    NgxStarRatingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},

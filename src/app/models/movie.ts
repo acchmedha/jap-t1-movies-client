@@ -1,3 +1,5 @@
+import { Actor } from "./actor.model";
+
 export interface Movie {
     id: number;
     title: string;
@@ -5,4 +7,6 @@ export interface Movie {
     releaseDate: Date;
     overview: string;
     averageRating: number;
+    actors: Actor[];
+    type: number;
 }
