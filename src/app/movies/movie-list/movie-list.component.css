@@ -2,3 +2,18 @@
   position: relative;
   top: 10px;
 }
+
+ul > li:last-of-type {
+  margin-left: auto;
+}
+
+.nav-link.logout {
+cursor: pointer;
+color: white
+}
+
+.nav-c {
+  padding: 0;
+  margin:0;
+}
+

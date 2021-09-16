@@ -22,6 +22,7 @@ import { TabComponent } from './tab/tab.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
+import { TvshowsComponent } from './tvshows/tvshows.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
     MovieListComponent,
     MovieDetailComponent,
     MovieCardComponent,
-    TabComponent
+    TabComponent,
+    TvshowsComponent
   ],
   imports: [
     BrowserModule,

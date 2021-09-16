@@ -20,7 +20,8 @@ export class MovieDetailComponent implements OnInit {
   }
 
   loadMovie() {
-    this.movieService.getMovie(this.route.snapshot.paramMap.get('title')).subscribe(movie => {
+    let movieParams = +this.route.snapshot.paramMap.get('id')
+    this.movieService.getMovie(movieParams).subscribe(movie => {(movie);
       this.movie = movie;
     })
   }
@@ -38,7 +39,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   removeRating() {
-    this.movie.userVote = 0;
     this.rateMovie();
   }
 
