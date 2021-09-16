@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Movie } from 'src/app/models/movie';
 import { MovieService } from 'src/app/services/movie.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -11,8 +14,15 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class MovieDetailComponent implements OnInit {
   movie: Movie;
+  value: number = 0;
+  public form: FormGroup;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(private movieService: MovieService, private route: ActivatedRoute, private fb: FormBuilder, private toastr: ToastrService) {
+    this.form = this.fb.group({
+      rating: ['', Validators.required],
+    })
+
+   }
 
 
   ngOnInit(): void {
@@ -20,26 +30,24 @@ export class MovieDetailComponent implements OnInit {
   }
 
   loadMovie() {
-    this.movieService.getMovie(this.route.snapshot.paramMap.get('title')).subscribe(movie => {
+    let movieParams = +this.route.snapshot.paramMap.get('id')
+    this.movieService.getMovie(movieParams).subscribe(movie => {
       this.movie = movie;
-    })
+    });
   }
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title', centered: true});
-  }
-
-  rateMovie() {
-    this.movieService.updateMovie(this.movie.id, this.movie).subscribe(response => {
+  rateVideo() {
+    this.movieService.rateVideos(this.movie.id, this.form.value.rating).subscribe(response => {
       console.log(response);
+      this.toastr.success('Successfully added rating!');
     }, error => {
       console.log(error);
+      this.toastr.error(error.error.message);
     })
   }
 
   removeRating() {
-    this.movie.userVote = 0;
-    this.rateMovie();
+    this.rateVideo();
   }
 
 }

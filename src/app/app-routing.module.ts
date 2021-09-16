@@ -9,16 +9,17 @@ import { LoginComponent } from './login/login.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { RegisterComponent } from './register/register.component';
+import { TvshowsComponent } from './tvshows/tvshows.component';
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', component: HomeComponent},
   {path: '',
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
       {path: 'movies', component: MovieListComponent},
-      {path: 'movies/:title', component: MovieDetailComponent}
+      {path: 'movies/:id', component: MovieDetailComponent}
     ]
   },
   {path: 'login', component: LoginComponent},
@@ -26,7 +27,7 @@ const routes: Routes = [
   {path: 'errors', component: TestErrorsComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'server-error', component: ServerErrorsComponent},
-  {path: '**', component: HomeComponent, pathMatch: 'full'},
+  {path: '**', component: NotFoundComponent, pathMatch: 'full'},
 ];
 
 @NgModule({
