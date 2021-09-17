@@ -2,19 +2,16 @@
     <div class="card-img-wrapper">
         <img src="{{movie.posterPath}}" alt="{{movie.title}}" class="card-img-top">
         <ul class="list-inline movie-icons animate text-center">
-            <li class="list-inline-item"><button routerLink="/movies/{{movie.title}}" class="btn btn-warning"><i class="fa fa-film">
+            <li class="list-inline-item"><button routerLink="/movies/{{movie.id}}" class="btn btn-warning"><i class="fa fa-film">
 
             </i></button></li>
         </ul>
     </div>
     <div class="card-body p-1">
         <h6 style="color: white;" class="card-title mb-1 mt-1 ml-2">{{movie.title}}</h6>
-        <div class="d-flex justify-content-start">
+        <div class="d-flex justify-content-center">
             <p style="color: white;" class='card-text text-center'><i style="color: #f5c518;" class="fa fa-star ml-2 mt-2 mr-1">
-            </i>{{movie.voteAverage}}</p>
-            <p style="color: white;" class='card-text text-center'><i style="color: #5799ef;" class="fa fa-star-o mt-2 mr-1 ml-3
-                "></i>
-                {{movie.userVote}}</p>
+            </i>{{movie.averageRating}}</p>
         </div>
         
     </div>

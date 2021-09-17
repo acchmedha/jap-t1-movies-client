@@ -1,9 +1,12 @@
+import { Actor } from "./actor.model";
+
 export interface Movie {
     id: number;
     title: string;
-    voteAverage: number;
     posterPath: string;
     releaseDate: Date;
     overview: string;
-    userVote: number;
+    averageRating: number;
+    actors: Actor[];
+    type: number;
 }
