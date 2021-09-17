@@ -7,19 +7,15 @@
 
 ## Setting Up a Project
 
-Install the Angular CLI globally:
+- First clone this repository and do the following:
+
+- Run npm install in the root folder
 ```
-npm install -g @angular/cli
+npm install
 ```
 
-Create workspace:
+- Run the application:
 ```
-ng new [PROJECT NAME]angular/cli
-```
-Run the application:
-Create workspace:
-```
-cd [PROJECT NAME]
 ng serve
 ```
 
