@@ -16,7 +16,7 @@ npm install
 
 - Run the application:
 ```
-ng serve
+ng serve or ng serve --o
 ```
 
 Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
