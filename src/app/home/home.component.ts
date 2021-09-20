@@ -10,7 +10,7 @@ import { MovieService } from '../services/movie.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
   }
