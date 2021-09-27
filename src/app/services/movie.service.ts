@@ -33,12 +33,12 @@ export class MovieService {
       params = params.append('search', videoParams.search.toString() || "");
       params = params.append('type', videoParams.type.toString());
 }
-    return this.http.get<Movie[]>(this.baseUrl + 'moviestvshows', {observe: 'response', params});
+    return this.http.get<Movie[]>(this.baseUrl + 'videos', {observe: 'response', params});
 
   }
 
   getMovie(id: number) {
-    return this.http.get<Movie>(this.baseUrl + 'moviestvshows/' + id);
+    return this.http.get<Movie>(this.baseUrl + 'videos/' + id);
   }
 
 

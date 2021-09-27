@@ -10,7 +10,6 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { SharedModule } from './modules/shared.module';
-import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { ServerErrorsComponent } from './errors/server-errors/server-errors.component';
@@ -18,10 +17,8 @@ import { MovieListComponent } from './movies/movie-list/movie-list.component';
 import { MovieDetailComponent } from './movies/movie-detail/movie-detail.component';
 import { MovieCardComponent } from './movies/movie-card/movie-card.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
-import { TabComponent } from './tab/tab.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from 'ngx-spinner';
-import { TvshowsComponent } from './tvshows/tvshows.component';
 import { NgxStarRatingModule } from 'ngx-star-rating';
 
 
@@ -31,14 +28,11 @@ import { NgxStarRatingModule } from 'ngx-star-rating';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    TestErrorsComponent,
     NotFoundComponent,
     ServerErrorsComponent,
     MovieListComponent,
     MovieDetailComponent,
-    MovieCardComponent,
-    TabComponent,
-    TvshowsComponent
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,
