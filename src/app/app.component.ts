@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
-import { AccountService } from './services/account.service';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { AccountService } from './services/account.service';
 export class AppComponent implements OnInit {
   title = 'jap-task1-MoviesClient';
 
-  constructor(private accountService: AccountService) {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit(): void {
@@ -19,6 +19,6 @@ export class AppComponent implements OnInit {
 
   setCurrentUser() {
     const user: User = JSON.parse(localStorage.getItem('user'));
-    this.accountService.setCurrentUser(user);
+    this.authService.setCurrentUser(user);
   }
 }

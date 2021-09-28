@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Movie } from 'src/app/models/movie';
+import { Video } from 'src/app/models/video';
 
 @Component({
   selector: 'app-movie-card',
@@ -7,7 +7,7 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./movie-card.component.css']
 })
 export class MovieCardComponent implements OnInit {
-  @Input() movie: Movie;
+  @Input() video: Video;
 
   constructor() { }
 

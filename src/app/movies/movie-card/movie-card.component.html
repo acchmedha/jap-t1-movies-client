@@ -1,17 +1,17 @@
 <div class="card mb-3">
     <div class="card-img-wrapper">
-        <img src="{{movie.posterPath}}" alt="{{movie.title}}" class="card-img-top">
+        <img src="{{video.posterPath}}" alt="{{video.title}}" class="card-img-top">
         <ul class="list-inline movie-icons animate text-center">
-            <li class="list-inline-item"><button routerLink="/movies/{{movie.id}}" class="btn btn-warning"><i class="fa fa-film">
+            <li class="list-inline-item"><button routerLink="/movies/{{video.id}}" class="btn btn-warning"><i class="fa fa-film">
 
             </i></button></li>
         </ul>
     </div>
     <div class="card-body p-1">
-        <h6 style="color: white;" class="card-title mb-1 mt-1 ml-2">{{movie.title}}</h6>
+        <h6 style="color: white;" class="card-title mb-1 mt-1 ml-2">{{video.title}}</h6>
         <div class="d-flex justify-content-center">
             <p style="color: white;" class='card-text text-center'><i style="color: #f5c518;" class="fa fa-star ml-2 mt-2 mr-1">
-            </i>{{movie.averageRating}}</p>
+            </i>{{video.averageRating}}</p>
         </div>
         
     </div>

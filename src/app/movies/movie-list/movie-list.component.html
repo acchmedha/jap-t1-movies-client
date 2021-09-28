@@ -1,4 +1,4 @@
-<div class="container mt-5 mb-3 nav-c" *ngIf="accountService.currentUser$ | async">
+<div class="container mt-5 mb-3 nav-c" *ngIf="authService.currentUser$ | async">
   <ul class="nav nav-pills" *ngIf="router.url != '/'">
     <li class="nav-item">
       <a class="nav-link active bg-light mr-1 text-dark" aria-current="page" routerLink="/"><i class="fa fa-home" aria-hidden="true"></i>
@@ -12,7 +12,7 @@
         <a class="nav-link bg-warning text-dark btn-shows" (click)="switchType(1)" aria-current="page" routerLink="/movies"><i class="fa fa-television" aria-hidden="true"></i>
           Tv Shows</a>
       </li>
-      <li class="nav-item" *ngIf="(accountService.currentUser$ | async) as user">
+      <li class="nav-item" *ngIf="(authService.currentUser$ | async) as user">
         <div class="btn-group" dropdown>
           <button id="button-basic" dropdownToggle type="button" class="btn dropdown-toggle text-white"
                   aria-controls="dropdown-basic"><i class="fa fa-user-circle-o mr-1"></i>{{user.username}}<span class="caret"></span>
@@ -31,17 +31,14 @@
   </ul>
 </div>
 
-
-
-
 <div class="container mb-3 pl-0 pr-0" *ngIf="router.url != '/'">
   <div class="form-outline d-flex justify-content-start search-bar">
     <input type="search" class="form-control w-25" [(ngModel)]="videoParams.search" (ngModelChange)="Search()"  placeholder="Search...">
   </div>
 
 <div class="row  row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 mt-5">
-    <div *ngFor="let movie of movies" class="col-2">
-        <app-movie-card [movie]="movie"></app-movie-card>  
+    <div *ngFor="let video of videos" class="col-2">
+        <app-movie-card [video]="video"></app-movie-card>  
     </div>
 </div>
 

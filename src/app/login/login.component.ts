@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { AccountService } from '../services/account.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +11,7 @@ import { AccountService } from '../services/account.service';
 export class LoginComponent implements OnInit {
   model: any = {};
 
-  constructor(public accountService: AccountService, private router: Router, 
+  constructor(public authService: AuthService, private router: Router, 
     private toastr: ToastrService) { }
 
   ngOnInit(): void {
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.accountService.login(this.model).subscribe(res => {
+    this.authService.login(this.model).subscribe(res => {
       this.router.navigateByUrl('/movies');
     }, error => {
       console.log(error);

@@ -1,6 +1,6 @@
 import { Actor } from "./actor.model";
 
-export interface Movie {
+export interface Video {
     id: number;
     title: string;
     posterPath: string;

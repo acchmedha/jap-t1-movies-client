@@ -1,11 +1,9 @@
 import { Component, OnInit  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Movie } from 'src/app/models/movie';
-import { MovieService } from 'src/app/services/movie.service';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import { Video } from 'src/app/models/video';
+import { VideoService } from 'src/app/services/video.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Actor } from 'src/app/models/actor.model';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,11 +11,12 @@ import { Actor } from 'src/app/models/actor.model';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  movie: Movie;
+  video: Video;
   value: number = 0;
   public form: FormGroup;
 
-  constructor(private movieService: MovieService, private route: ActivatedRoute, private fb: FormBuilder, private toastr: ToastrService) {
+  constructor(private videoService: VideoService, private route: ActivatedRoute, private fb: FormBuilder, 
+    private toastr: ToastrService) {
     this.form = this.fb.group({
       rating: ['', Validators.required],
     })
@@ -26,18 +25,18 @@ export class MovieDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.loadMovie();
+    this.loadVideo();
   }
 
-  loadMovie() {
-    let movieParams = +this.route.snapshot.paramMap.get('id')
-    this.movieService.getMovie(movieParams).subscribe(movie => {
-      this.movie = movie;
+  loadVideo() {
+    let videoParams = +this.route.snapshot.paramMap.get('id');
+    this.videoService.getVideo(videoParams).subscribe(video => {
+      this.video = video;
     });
   }
 
   rateVideo() {
-    this.movieService.rateVideos(this.movie.id, this.form.value.rating).subscribe(response => {
+    this.videoService.rateVideos(this.video.id, this.form.value.rating).subscribe(response => {
       console.log(response);
       this.toastr.success('Successfully added rating!');
     }, error => {
@@ -46,8 +45,8 @@ export class MovieDetailComponent implements OnInit {
     })
   }
 
-  removeRating() {
-    this.rateVideo();
-  }
+  // removeRating() {
+  //   this.rateVideo();
+  // }
 
 }

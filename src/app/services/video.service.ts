@@ -1,51 +1,49 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Movie } from '../models/movie';
-import { moviesTvShowsParams } from '../models/movies-tv-shows-params.model';
-
+import { Video } from '../models/video';
+import { VideoParams } from '../models/videoParams';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MovieService {
+export class VideoService {
   baseUrl = environment.apiUrl;
-  videoParams: moviesTvShowsParams;
+  videoParams: VideoParams;
   
   constructor(private http: HttpClient) { 
-    this.videoParams = new moviesTvShowsParams();
+    this.videoParams = new VideoParams();
   }
 
-  setVideoParams(params: moviesTvShowsParams) {
+  setVideoParams(params: VideoParams) {
     this.videoParams = params;
   }
 
   resetVideoParams() {
-    this.videoParams = new moviesTvShowsParams();
+    this.videoParams = new VideoParams();
     return this.videoParams;
   }
 
-  getMoviesOrTvShows(videoParams: moviesTvShowsParams) {
+  getVideos(videoParams: VideoParams) {
     let params = new HttpParams();
     if(videoParams.pageNumber !== null && videoParams.pageSize !== null) {
       params = params.append('pageNumber', videoParams.pageNumber.toString());
       params = params.append('pageSize', videoParams.pageSize.toString());
       params = params.append('search', videoParams.search.toString() || "");
       params = params.append('type', videoParams.type.toString());
-}
-    return this.http.get<Movie[]>(this.baseUrl + 'videos', {observe: 'response', params});
-
+    }
+    return this.http.get<Video[]>(this.baseUrl + 'videos', {observe: 'response', params});
   }
 
-  getMovie(id: number) {
-    return this.http.get<Movie>(this.baseUrl + 'videos/' + id);
+  getVideo(id: number) {
+    return this.http.get<Video>(this.baseUrl + 'videos/' + id);
   }
 
 
   rateVideos(id: number, rate: number) {
     const rating = {
       "value": rate,
-      "movieId": id
+      "videoEntityId": id
     }
     return this.http.post(this.baseUrl + `ratings/add`, rating);
   }

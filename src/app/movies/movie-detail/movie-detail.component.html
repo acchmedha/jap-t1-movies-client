@@ -1,18 +1,18 @@
-  <div class="row details" *ngIf="movie">
+  <div class="row details" *ngIf="video">
     <div class="col-4 mt-5">
         <div>
-            <img src="{{movie.posterPath}}" alt="{{movie.title}}" class="image-thumbnail">
+            <img src="{{video.posterPath}}" alt="{{video.title}}" class="image-thumbnail">
         </div>
     </div>
     <div class="col-8 mt-5 text-white">
         <div class="d-flex align-items-start flex-column">
             <div class="mr-auto p-2">
-                <h3>{{movie.title}} ({{movie.releaseDate | date: 'y'}})</h3>
+                <h3>{{video.title}} ({{video.releaseDate | date: 'y'}})</h3>
             </div>
             <div class="p-2">
                 <h5 class="text-muted">Rating</h5>
                 <p class="ml-3"><i style="font-size: 1.8em; color: #f5c518;" class="fa fa-star mr-2"></i>
-                    <span class="rating h5">{{movie.averageRating}}<span class="text-muted">/5</span></span></p>
+                    <span class="rating h5">{{video.averageRating}}<span class="text-muted">/5</span></span></p>
             </div>
             <div class="p-2">
                 <h5 class="text-muted">Rate it!</h5>
@@ -23,15 +23,15 @@
             </div>
             <div class="p-2">
                 <h5 class="text-muted">Release date </h5>
-                <p>{{movie.releaseDate | date: 'longDate'}}</p>
+                <p>{{video.releaseDate | date: 'longDate'}}</p>
             </div>
             <div class="p-2"> 
               <h5 class="text-muted">Movie Description</h5>
-              <p>{{movie.overview}}</p>
+              <p>{{video.overview}}</p>
             </div>
             <div class="p-2"> 
               <h5 class="text-muted">Cast</h5>
-              <p *ngFor="let actor of movie.actors">{{actor.name}} {{actor.surname}}</p>
+              <p *ngFor="let actor of video.actors">{{actor.firstName}} {{actor.lastName}}</p>
             </div>
         </div>
         

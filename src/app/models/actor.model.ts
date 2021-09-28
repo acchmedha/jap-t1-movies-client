@@ -1,4 +1,4 @@
 export interface Actor {
-    name: string;
-    surname: string;
+    firstName: string;
+    lastName: string;
 }

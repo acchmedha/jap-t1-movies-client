@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Movie } from 'src/app/models/movie';
-import { moviesTvShowsParams } from 'src/app/models/movies-tv-shows-params.model';
-import { AccountService } from 'src/app/services/account.service';
-import { MovieService } from 'src/app/services/movie.service';
+import { Video } from 'src/app/models/video';
+import { VideoParams } from 'src/app/models/videoParams';
+import { AuthService } from 'src/app/services/auth.service';
+import { VideoService } from 'src/app/services/video.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,48 +13,48 @@ import { environment } from 'src/environments/environment';
 })
 export class MovieListComponent implements OnInit {
   baseUrl = environment.clientUrl;
-  movies: Movie[] = [];
+  videos: Video[] = [];
   timer: any;
-  videoParams: moviesTvShowsParams;
+  videoParams: VideoParams;
 
-  constructor(private movieService: MovieService, public router: Router, public accountService: AccountService) {
-    this.videoParams = this.movieService.resetVideoParams();
+  constructor(private videoService: VideoService, public router: Router, public authService: AuthService) {
+    this.videoParams = this.videoService.resetVideoParams();
   }
 
   ngOnInit(): void{
-    this.loadMovies();
+    this.loadVideos();
   }
 
-  loadMovies() {
-    this.movieService.getMoviesOrTvShows(this.videoParams).subscribe(res => {
-      this.movies = res.body;
+  loadVideos() {
+    this.videoService.getVideos(this.videoParams).subscribe(res => {
+      this.videos = res.body;
     }, error => {
       console.log(error);
     })
   }
 
   switchType(type: number) {
-    this.movies = [];
-    this.videoParams = this.movieService.resetVideoParams();
+    this.videos = [];
+    this.videoParams = this.videoService.resetVideoParams();
     this.videoParams.type = type;
-    this.loadMovies();
+    this.loadVideos();
   }
 
   loadMoreData() {
     this.videoParams.pageSize *= 2;
-    this.loadMovies();
+    this.loadVideos();
   }
 
   Search() {
     //debounce
     clearTimeout(this.timer);
     this.timer = setTimeout(() => {
-      this.loadMovies();
+      this.loadVideos();
     }, 400);
   }
 
   logout() {
-    this.accountService.logout();
+    this.authService.logout();
     window.location.href = this.baseUrl + 'login';
   }
 }

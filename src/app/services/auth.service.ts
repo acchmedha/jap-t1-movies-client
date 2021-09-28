@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AccountService {
+export class AuthService {
   baseUrl = environment.apiUrl;
   
   private currentUserSource = new ReplaySubject<User>(1);
@@ -18,8 +18,8 @@ export class AccountService {
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'auth/login', model).pipe(
-      map((response: User) => {
-        const user = response;
+      map((res: User) => {
+        const user = res;
         if(user) {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);
@@ -39,6 +39,4 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
   }
-
-
 }

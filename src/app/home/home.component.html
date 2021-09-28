@@ -9,10 +9,10 @@
     <p class="lead"><b>Movie Centric</b> is an online database of information related to films, television programs, home videos, 
         video games, and streaming content online</p>
     <p class="lead">
-        <span *ngIf="accountService.currentUser$ | async">
+        <span *ngIf="authService.currentUser$ | async">
             <a href="#" class="btn btn-lg btn-outline-warning" routerLink='/movies'>Get Started</a>
         </span>
-        <span *ngIf="!(accountService.currentUser$ | async)">
+        <span *ngIf="!(authService.currentUser$ | async)">
             <a href="#" class="btn btn-lg btn-outline-warning" routerLink='/login'>Get Started</a>
         </span>
         
