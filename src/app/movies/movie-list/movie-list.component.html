@@ -5,11 +5,11 @@
         Home</a>
     </li>
       <li class="nav-item">
-        <a class="nav-link bg-warning mr-1 text-dark btn-movies" (click)="switchType(0)"aria-current="page" routerLink="/movies"><i class="fa fa-film" aria-hidden="true"></i>
+        <a class="nav-link bg-warning mr-1 text-dark btn-movies" aria-current="page" routerLink="/movies"><i class="fa fa-film" aria-hidden="true"></i>
           Movies</a>
       </li>
       <li class="nav-item" >
-        <a class="nav-link bg-warning text-dark btn-shows" (click)="switchType(1)" aria-current="page" routerLink="/movies"><i class="fa fa-television" aria-hidden="true"></i>
+        <a class="nav-link bg-warning text-dark btn-shows"  aria-current="page" routerLink="/movies"><i class="fa fa-television" aria-hidden="true"></i>
           Tv Shows</a>
       </li>
       <li class="nav-item" *ngIf="(authService.currentUser$ | async) as user">

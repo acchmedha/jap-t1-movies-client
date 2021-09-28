@@ -1,4 +1,5 @@
 import { Actor } from "./actor.model";
+import { VideoEnum } from "./videoEnum";
 
 export interface Video {
     id: number;
@@ -8,5 +9,5 @@ export interface Video {
     overview: string;
     averageRating: number;
     actors: Actor[];
-    type: number;
+    type: 0;
 }

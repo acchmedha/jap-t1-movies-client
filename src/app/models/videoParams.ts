@@ -1,6 +1,6 @@
 export class VideoParams {
     search = "";
     pageNumber = 1;
-    pageSize = 5;
-    type = 0;
+    pageSize = 10;
+    videoType = "Movie";
 }

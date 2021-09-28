@@ -20,9 +20,7 @@ export class MovieDetailComponent implements OnInit {
     this.form = this.fb.group({
       rating: ['', Validators.required],
     })
-
    }
-
 
   ngOnInit(): void {
     this.loadVideo();

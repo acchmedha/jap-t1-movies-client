@@ -9,30 +9,25 @@ import { VideoParams } from '../models/videoParams';
 })
 export class VideoService {
   baseUrl = environment.apiUrl;
-  videoParams: VideoParams;
+  params: VideoParams;
   
   constructor(private http: HttpClient) { 
-    this.videoParams = new VideoParams();
+    this.params = new VideoParams();
   }
 
-  setVideoParams(params: VideoParams) {
-    this.videoParams = params;
-  }
+  // setVideoParams(params: VideoParams) {
+  //   this.videoParams = params;
+  // }
 
   resetVideoParams() {
-    this.videoParams = new VideoParams();
-    return this.videoParams;
+    this.params = new VideoParams();
+    return this.params;
   }
 
-  getVideos(videoParams: VideoParams) {
-    let params = new HttpParams();
-    if(videoParams.pageNumber !== null && videoParams.pageSize !== null) {
-      params = params.append('pageNumber', videoParams.pageNumber.toString());
-      params = params.append('pageSize', videoParams.pageSize.toString());
-      params = params.append('search', videoParams.search.toString() || "");
-      params = params.append('type', videoParams.type.toString());
-    }
-    return this.http.get<Video[]>(this.baseUrl + 'videos', {observe: 'response', params});
+  getVideos(params: VideoParams) {
+    return this.http.get<Video[]>(this.baseUrl + 
+      `videos?VideoType=${params.videoType}&Pagination.PageNumber=${(params.pageNumber == null) ? 1 : params.pageNumber}
+      &Pagination.PageSize=${(params.pageSize == null) ? 10 : params.pageSize}&Search=${(params.search == null) ? "" : params.search}`);
   }
 
   getVideo(id: number) {
