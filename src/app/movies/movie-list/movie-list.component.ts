@@ -15,12 +15,12 @@ export class MovieListComponent implements OnInit {
   baseUrl = environment.clientUrl;
   videos: Video[] = [];
   timer: any;
-  videoParams: VideoParams;
   pageSize: number;
+  videoParams: VideoParams;
 
   constructor(private videoService: VideoService, public router: Router, public authService: AuthService) {
-    //this.videoParams = this.videoService.resetVideoParams();
     this.videoParams = new VideoParams();
+    this.pageSize = this.videoParams.pageSize;
   }
 
   ngOnInit(): void{
@@ -29,22 +29,19 @@ export class MovieListComponent implements OnInit {
 
   loadVideos() {
     this.videoService.getVideos(this.videoParams).subscribe(res => {
-      console.log(res);
-      this.videos = res;
+      this.videos = res.body;
     }, error => {
       console.log(error);
     })
   }
 
-  // switchType(type: number) {
-  //   this.videos = [];
-  //   this.videoParams = this.videoService.resetVideoParams();
-  //   this.videoParams.type = type;
-  //   this.loadVideos();
-  // }
+  switchType(type: string) {
+    this.videoParams.videoType = type;
+    this.loadVideos();
+  }
 
   loadMoreData() {
-    this.videoParams.pageSize *= 2;
+    this.videoParams.pageSize += this.pageSize;
     this.loadVideos();
   }
 

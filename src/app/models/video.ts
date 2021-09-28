@@ -1,5 +1,4 @@
 import { Actor } from "./actor.model";
-import { VideoEnum } from "./videoEnum";
 
 export interface Video {
     id: number;

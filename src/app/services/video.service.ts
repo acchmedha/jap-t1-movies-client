@@ -9,25 +9,29 @@ import { VideoParams } from '../models/videoParams';
 })
 export class VideoService {
   baseUrl = environment.apiUrl;
-  params: VideoParams;
+  videoParams: VideoParams;
   
   constructor(private http: HttpClient) { 
-    this.params = new VideoParams();
+    this.videoParams = new VideoParams();
   }
 
-  // setVideoParams(params: VideoParams) {
-  //   this.videoParams = params;
-  // }
+  setVideoParams(params: VideoParams) {
+    this.videoParams = params;
+  }
 
   resetVideoParams() {
-    this.params = new VideoParams();
-    return this.params;
+    this.videoParams = new VideoParams();
+    return this.videoParams;
   }
 
-  getVideos(params: VideoParams) {
-    return this.http.get<Video[]>(this.baseUrl + 
-      `videos?VideoType=${params.videoType}&Pagination.PageNumber=${(params.pageNumber == null) ? 1 : params.pageNumber}
-      &Pagination.PageSize=${(params.pageSize == null) ? 10 : params.pageSize}&Search=${(params.search == null) ? "" : params.search}`);
+  getVideos(videoParams: VideoParams) {
+    let params = new HttpParams();
+    params = params.append('VideoType', videoParams.videoType);
+    params = params.append('Pagination.PageNumber', videoParams.pageNumber.toString());
+    params = params.append('Pagination.PageSize', videoParams.pageSize.toString());
+    params = params.append('Search', videoParams.search);
+    
+    return this.http.get<Video[]>(this.baseUrl + 'videos', {observe: 'response', params});
   }
 
   getVideo(id: number) {
